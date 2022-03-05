@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Location Data PKHeX Plugin</Description>
+    <FileVersion>1.0.0</FileVersion>
+    <TargetFramework>net462</TargetFramework>
+    <OutputType>Library</OutputType>
+    <LangVersion>10</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <PackageReference Include="PKHeX.Core" Version="22.3.1" />
+  </ItemGroup>
+  
+</Project>
