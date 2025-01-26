@@ -9,10 +9,6 @@ public sealed class ObjectEvent3TemplateData : IRawDataAccessor
     public const int SIZE = ObjectEvent3Template.SIZE * COUNT; // 0x600
     public const int COUNT = 64;
 
-    public const int OFFSET_RS = ObjectEvent3Data.OFFSET_RS + ObjectEvent3Data.SIZE;     // 0xC20
-    public const int OFFSET_E = ObjectEvent3Data.OFFSET_E + ObjectEvent3Data.SIZE;       // 0xC70
-    public const int OFFSET_FRLG = ObjectEvent3Data.OFFSET_FRLG + ObjectEvent3Data.SIZE; // 0x8E0
-
     [Browsable(false)]
     public Memory<byte> Data { get; set; } = new byte[SIZE];
 
