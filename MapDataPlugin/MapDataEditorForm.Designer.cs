@@ -1,6 +1,6 @@
-﻿namespace LocationDataPlugin;
+﻿namespace MapDataPlugin;
 
-public partial class LocationDataEditorForm
+public partial class MapDataEditorForm
 {
     /// <summary>
     /// Required designer variable.
@@ -70,7 +70,7 @@ public partial class LocationDataEditorForm
         MapDataPropertyGrid.TabIndex = 12;
         MapDataPropertyGrid.ToolbarVisible = false;
         // 
-        // LocationDataEditorForm
+        // MapDataEditorForm
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -83,10 +83,10 @@ public partial class LocationDataEditorForm
         Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
         MinimizeBox = false;
         MinimumSize = new System.Drawing.Size(350, 320);
-        Name = "LocationDataEditorForm";
+        Name = "MapDataEditorForm";
         SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
         StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-        Text = "Location Data Editor";
+        Text = "Map Data Editor";
         ResumeLayout(false);
     }
 

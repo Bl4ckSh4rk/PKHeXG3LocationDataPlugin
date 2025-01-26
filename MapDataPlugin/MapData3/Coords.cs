@@ -2,10 +2,10 @@
 using System.ComponentModel;
 using static System.Buffers.Binary.BinaryPrimitives;
 
-namespace LocationDataPlugin;
+namespace MapDataPlugin;
 
 [TypeConverter(typeof(ExpandableObjectConverter))]
-public sealed class Coords
+public sealed class Coords : IRawDataAccessor
 {
     public const int SIZE = 4;
 

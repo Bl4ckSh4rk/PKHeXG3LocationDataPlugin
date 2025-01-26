@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace LocationDataPlugin;
+namespace MapDataPlugin;
 
 [TypeConverter(typeof(ExpandableObjectConverter))]
-public sealed class ObjectEvent3Data
+public sealed class ObjectEvent3Data : IRawDataAccessor
 {
     public const int SIZE = ObjectEvent3.SIZE * COUNT; // 0x240;
     public const int COUNT = 16;
@@ -14,7 +14,7 @@ public sealed class ObjectEvent3Data
     public const int OFFSET_FRLG = 0x6A0;
 
     [Browsable(false)]
-    public Memory<byte> Data = new byte[SIZE];
+    public Memory<byte> Data { get; set; } = new byte[SIZE];
 
     public ObjectEvent3Data(Memory<byte> data) => Data = data;
     public ObjectEvent3Data() { }

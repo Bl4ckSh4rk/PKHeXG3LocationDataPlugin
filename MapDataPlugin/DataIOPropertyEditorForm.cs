@@ -2,35 +2,37 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace LocationDataPlugin;
+namespace MapDataPlugin;
 
-public partial class MapViewPropertyEditorForm : Form
+public partial class DataIOPropertyEditorForm : Form
 {
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public MapView3 MapView { get; private set; }
+    public byte[] Data { get; private set; }
+    private readonly int expectedSize;
 
-    public MapViewPropertyEditorForm(MapView3 mapview)
+    public DataIOPropertyEditorForm(byte[] data)
     {
         InitializeComponent();
-        MapView = mapview;
+        Data = data;
+        expectedSize = data.Length;
     }
 
     private void ImportButton_Click(object sender, System.EventArgs e)
     {
         using var ofd = new OpenFileDialog();
         ofd.Filter = $"Binary Files (*.bin)|*.bin|All Files (*.*)|*.*";
-        ofd.Title = "Import Map View Data";
+        ofd.Title = "Import Data";
         ofd.FilterIndex = 1;
 
         if (ofd.ShowDialog() == DialogResult.OK)
         {
             long fileSize = new FileInfo(ofd.FileName).Length;
-            if (fileSize != MapView3.SIZE)
+            if (fileSize != expectedSize)
             {
-                MessageBox.Show($"Invalid file size. Expected {MapView3.SIZE} bytes, got {fileSize} bytes.", "Invalid File Size", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Invalid file size. Expected {expectedSize} bytes, got {fileSize} bytes.", "Invalid File Size", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            MapView = new(File.ReadAllBytes(ofd.FileName));
+            Data = File.ReadAllBytes(ofd.FileName);
         }
         Close();
     }
@@ -39,12 +41,12 @@ public partial class MapViewPropertyEditorForm : Form
     {
         using var sfd = new SaveFileDialog();
         sfd.Filter = $"Binary Files (*.bin)|*.bin|All Files (*.*)|*.*";
-        sfd.Title = "Export Map View Data";
+        sfd.Title = "Export Data";
         sfd.FilterIndex = 1;
 
         if (sfd.ShowDialog() == DialogResult.OK)
         {
-            File.WriteAllBytes(sfd.FileName, MapView.Data.ToArray());
+            File.WriteAllBytes(sfd.FileName, Data);
         }
         Close();
     }

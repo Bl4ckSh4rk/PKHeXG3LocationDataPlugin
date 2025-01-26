@@ -4,9 +4,9 @@ using System.Drawing.Design;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace LocationDataPlugin;
+namespace MapDataPlugin;
 
-public sealed class MapViewPropertyEditor : UITypeEditor
+public sealed class DataIOPropertyEditor : UITypeEditor
 {
     public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext? context)
     {
@@ -17,13 +17,13 @@ public sealed class MapViewPropertyEditor : UITypeEditor
     {
         if (provider.GetService(typeof(IWindowsFormsEditorService)) is IWindowsFormsEditorService editorService)
         {
-            using MapViewPropertyEditorForm form = new(value as MapView3 ?? new MapView3(new byte[MapView3.SIZE]));
+            using DataIOPropertyEditorForm form = new(((IRawDataAccessor)value!).Data.ToArray()!);
             if (editorService.ShowDialog(form) == DialogResult.OK)
             {
-                value = form.MapView;
+                ((IRawDataAccessor)value!).Data = form.Data;
             }
         }
 
-        return value as MapView3 ?? new MapView3(new byte[MapView3.SIZE]);
+        return value!;
     }
 }

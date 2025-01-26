@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationDataPlugin", "LocationDataPlugin\LocationDataPlugin.csproj", "{E8BC86F4-7322-4C3F-99BC-4CA5AD6E19F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapDataPlugin", "MapDataPlugin\MapDataPlugin.csproj", "{E8BC86F4-7322-4C3F-99BC-4CA5AD6E19F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,13 +2,13 @@
 using System.Windows.Forms;
 using PKHeX.Core;
 
-namespace LocationDataPlugin;
+namespace MapDataPlugin;
 
-public partial class LocationDataEditorForm : Form
+public partial class MapDataEditorForm : Form
 {
     private readonly MapData3 md;
 
-    public LocationDataEditorForm(SAV3 sav)
+    public MapDataEditorForm(SAV3 sav)
     {
         InitializeComponent();
 

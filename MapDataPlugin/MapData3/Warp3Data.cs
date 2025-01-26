@@ -1,16 +1,16 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace LocationDataPlugin;
+namespace MapDataPlugin;
 
 [TypeConverter(typeof(ExpandableObjectConverter))]
-public sealed class Warp3Data
+public sealed class Warp3Data : IRawDataAccessor
 {
     public const int SIZE = Warp3.SIZE * COUNT; // 0x28
     public const int COUNT = 5;
 
     [Browsable(false)]
-    public Memory<byte> Data = new byte[SIZE];
+    public Memory<byte> Data { get; set; } = new byte[SIZE];
 
     public Warp3Data(Memory<byte> data) => Data = data;
     public Warp3Data() { }

@@ -1,6 +1,6 @@
-﻿namespace LocationDataPlugin;
+﻿namespace MapDataPlugin;
 
-partial class MapViewPropertyEditorForm
+partial class DataIOPropertyEditorForm
 {
     /// <summary>
     /// Required designer variable.
@@ -54,7 +54,7 @@ partial class MapViewPropertyEditorForm
         ExportButton.UseVisualStyleBackColor = true;
         ExportButton.Click += ExportButton_Click;
         // 
-        // MapViewPropertyEditorForm
+        // DataIOPropertyEditorForm
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -64,9 +64,10 @@ partial class MapViewPropertyEditorForm
         FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
         MaximizeBox = false;
         MinimizeBox = false;
-        Name = "MapViewPropertyEditorForm";
+        Name = "DataIOPropertyEditorForm";
         ShowIcon = false;
-        Text = "MapView";
+        StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+        Text = "Data I/O";
         ResumeLayout(false);
     }
 

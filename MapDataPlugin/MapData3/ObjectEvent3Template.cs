@@ -2,15 +2,15 @@
 using System.ComponentModel;
 using static System.Buffers.Binary.BinaryPrimitives;
 
-namespace LocationDataPlugin;
+namespace MapDataPlugin;
 
 [TypeConverter(typeof(ExpandableObjectConverter))]
-public sealed class ObjectEvent3Template
+public sealed class ObjectEvent3Template : IRawDataAccessor
 {
     public const int SIZE = 0x18;
 
     [Browsable(false)]
-    public Memory<byte> Data = new byte[SIZE];
+    public Memory<byte> Data { get; set; } = new byte[SIZE];
     public ObjectEvent3Template(Memory<byte> data) => Data = data;
     public ObjectEvent3Template() { }
 

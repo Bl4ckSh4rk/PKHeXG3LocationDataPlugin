@@ -2,11 +2,11 @@
 using System.Windows.Forms;
 using PKHeX.Core;
 
-namespace LocationDataPlugin;
+namespace MapDataPlugin;
 
-public sealed class LocationDataEditor : IPlugin
+public sealed class MapDataPlugin : IPlugin
 {
-    public string Name => nameof(LocationDataPlugin);
+    public string Name => nameof(MapDataPlugin);
     public int Priority => 1;
     public ISaveFileProvider SaveFileEditor { get; private set; } = null!;
 
@@ -34,7 +34,7 @@ public sealed class LocationDataEditor : IPlugin
     {
         ctrl = new(Name) { Text = "Location Data Editor", Visible = false };
         tools.DropDownItems.Add(ctrl);
-        ctrl.Click += (s, e) => { _ = new LocationDataEditorForm((SAV3)SaveFileEditor.SAV).ShowDialog(); };
+        ctrl.Click += (s, e) => { _ = new MapDataEditorForm((SAV3)SaveFileEditor.SAV).ShowDialog(); };
     }
 
     public void NotifySaveLoaded()

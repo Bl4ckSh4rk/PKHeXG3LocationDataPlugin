@@ -1,15 +1,15 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace LocationDataPlugin;
+namespace MapDataPlugin;
 
 [TypeConverter(typeof(ExpandableObjectConverter))]
-public sealed class ObjectEvent3
+public sealed class ObjectEvent3 : IRawDataAccessor
 {
     public const int SIZE = 0x24;
 
     [Browsable(false)]
-    public Memory<byte> Data = new byte[SIZE];
+    public Memory<byte> Data { get; set; } = new byte[SIZE];
 
     public ObjectEvent3(Memory<byte> data) => Data = data;
     public ObjectEvent3() { }

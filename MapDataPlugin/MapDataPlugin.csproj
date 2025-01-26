@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Location Data PKHeX Plugin</Description>
+    <Description>Map Data Plugin</Description>
     <FileVersion>1.1.0</FileVersion>
     <TargetFramework>net9.0-windows</TargetFramework>
     <LangVersion>13</LangVersion>

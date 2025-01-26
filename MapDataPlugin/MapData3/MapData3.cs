@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing.Design;
 using PKHeX.Core;
 
-namespace LocationDataPlugin;
+namespace MapDataPlugin;
 
 [TypeConverter(typeof(ExpandableObjectConverter))]
 public sealed class MapData3
@@ -38,10 +38,13 @@ public sealed class MapData3
     private int ObjectEventsOffset => SaveFile is SAV3RS ? ObjectEvent3Data.OFFSET_RS : SaveFile is SAV3E ? ObjectEvent3Data.OFFSET_E : ObjectEvent3Data.OFFSET_FRLG;
     private int ObjectEventTemplatesOffset => SaveFile is SAV3RS ? ObjectEvent3TemplateData.OFFSET_RS : SaveFile is SAV3E ? ObjectEvent3TemplateData.OFFSET_E : ObjectEvent3TemplateData.OFFSET_FRLG;
 
+    [Editor(typeof(DataIOPropertyEditor), typeof(UITypeEditor))]
     public Coords CurrentPosition => new(RawCoordsData.AsMemory());
 
+    [Editor(typeof(DataIOPropertyEditor), typeof(UITypeEditor))]
     public Warp3Data WarpData => new(RawWarpData.AsMemory());
 
+    [Editor(typeof(DataIOPropertyEditor), typeof(UITypeEditor))]
     public MiscMapData3 MapMiscData => new(RawMiscData.AsMemory());
 
     [Editor(typeof(MapViewPropertyEditor), typeof(UITypeEditor))]
@@ -51,7 +54,9 @@ public sealed class MapData3
         set => RawMapViewData = value.Data.ToArray();
     }
 
+    [Editor(typeof(DataIOPropertyEditor), typeof(UITypeEditor))]
     public ObjectEvent3Data ObjectEvents => new(RawObjectEventData.AsMemory());
+    [Editor(typeof(DataIOPropertyEditor), typeof(UITypeEditor))]
     public ObjectEvent3TemplateData ObjectEventTemplates => new(RawObjectEventTemplateData.AsMemory());
 
     public void Write()

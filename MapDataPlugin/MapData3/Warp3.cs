@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace LocationDataPlugin;
+namespace MapDataPlugin;
 
 [TypeConverter(typeof(ExpandableObjectConverter))]
-public sealed class Warp3
+public sealed class Warp3 : IRawDataAccessor
 {
     public const int SIZE = Coords.SIZE + 4; // 8
 
