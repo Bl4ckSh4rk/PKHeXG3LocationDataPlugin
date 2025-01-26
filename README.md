@@ -1,5 +1,5 @@
-# Gen 3 Location Data Plugin
-[PKHeX](https://github.com/kwsch/PKHeX) plugin to modify various location and map data information in generation 3 save files.
+# Gen 3 Map Data Plugin
+[PKHeX](https://github.com/kwsch/PKHeX) plugin to modify various map data information in generation 3 save files.
 
 :warning: **WARNING: Use at your own risk! Keep a backup!** :warning:
 
