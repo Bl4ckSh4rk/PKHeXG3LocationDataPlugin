@@ -2,7 +2,7 @@
 
 namespace MapDataPlugin;
 
-internal interface IRawDataAccessor
+public interface IRawDataAccessor
 {
     public Memory<byte> Data { get; set; }
 }

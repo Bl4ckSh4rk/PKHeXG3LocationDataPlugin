@@ -10,12 +10,12 @@ public sealed class MapData3
 {
     private SAV3 SaveFile { get; set; }
 
-    private readonly byte[] RawCoordsData;
-    private readonly byte[] RawWarpData;
-    private readonly byte[] RawMiscData;
+    private byte[] RawCoordsData;
+    private byte[] RawWarpData;
+    private byte[] RawMiscData;
     private byte[] RawMapViewData;
-    private readonly byte[] RawObjectEventData;
-    private readonly byte[] RawObjectEventTemplateData;
+    private byte[] RawObjectEventData;
+    private byte[] RawObjectEventTemplateData;
 
     public MapData3(SAV3 sav)
     {
@@ -39,13 +39,25 @@ public sealed class MapData3
     private int ObjectEventTemplatesOffset => SaveFile is SAV3RS ? ObjectEvent3TemplateData.OFFSET_RS : SaveFile is SAV3E ? ObjectEvent3TemplateData.OFFSET_E : ObjectEvent3TemplateData.OFFSET_FRLG;
 
     [Editor(typeof(DataIOPropertyEditor), typeof(UITypeEditor))]
-    public Coords CurrentPosition => new(RawCoordsData.AsMemory());
+    public Coords CurrentPosition
+    {
+        get => new(RawCoordsData.AsMemory());
+        set => RawCoordsData = value.Data.ToArray();
+    }
 
     [Editor(typeof(DataIOPropertyEditor), typeof(UITypeEditor))]
-    public Warp3Data WarpData => new(RawWarpData.AsMemory());
+    public Warp3Data WarpData
+    {
+        get => new(RawWarpData.AsMemory());
+        set => RawWarpData = value.Data.ToArray();
+    }
 
     [Editor(typeof(DataIOPropertyEditor), typeof(UITypeEditor))]
-    public MiscMapData3 MapMiscData => new(RawMiscData.AsMemory());
+    public MiscMapData3 MapMiscData
+    {
+        get => new(RawMiscData.AsMemory());
+        set => RawMiscData = value.Data.ToArray();
+    }
 
     [Editor(typeof(MapViewPropertyEditor), typeof(UITypeEditor))]
     public MapView3 MapView
@@ -55,9 +67,18 @@ public sealed class MapData3
     }
 
     [Editor(typeof(DataIOPropertyEditor), typeof(UITypeEditor))]
-    public ObjectEvent3Data ObjectEvents => new(RawObjectEventData.AsMemory());
+    public ObjectEvent3Data ObjectEvents
+    {
+        get => new(RawObjectEventData.AsMemory());
+        set => RawObjectEventData = value.Data.ToArray();
+    }
+
     [Editor(typeof(DataIOPropertyEditor), typeof(UITypeEditor))]
-    public ObjectEvent3TemplateData ObjectEventTemplates => new(RawObjectEventTemplateData.AsMemory());
+    public ObjectEvent3TemplateData ObjectEventTemplates
+    {
+        get => new(RawObjectEventTemplateData.AsMemory());
+        set => RawObjectEventTemplateData = value.Data.ToArray();
+    }
 
     public void Write()
     {

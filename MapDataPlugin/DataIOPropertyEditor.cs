@@ -15,15 +15,27 @@ public sealed class DataIOPropertyEditor : UITypeEditor
 
     public override object EditValue(ITypeDescriptorContext? context, IServiceProvider provider, object? value)
     {
+        byte[] data = ((IRawDataAccessor)value!).Data.ToArray()!;
         if (provider.GetService(typeof(IWindowsFormsEditorService)) is IWindowsFormsEditorService editorService)
         {
-            using DataIOPropertyEditorForm form = new(((IRawDataAccessor)value!).Data.ToArray()!);
+            using DataIOPropertyEditorForm form = new(data);
             if (editorService.ShowDialog(form) == DialogResult.OK)
             {
-                ((IRawDataAccessor)value!).Data = form.Data;
+                data = form.Data;
             }
         }
 
-        return value!;
+        string propertyName = context?.PropertyDescriptor?.PropertyType.Name!;
+        if (propertyName == nameof(Coords))
+            value = new Coords(data);
+        if (propertyName == nameof(MiscMapData3))
+            value = new MiscMapData3(data);
+        if (propertyName == nameof(ObjectEvent3Data))
+            value = new ObjectEvent3Data(data);
+        if (propertyName == nameof(ObjectEvent3TemplateData))
+            value = new ObjectEvent3TemplateData(data);
+        if (propertyName == nameof(Warp3Data))
+            value = new Warp3Data(data);
+        return value;
     }
 }
